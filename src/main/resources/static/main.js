@@ -5,7 +5,7 @@ function createUser(){
     var userEmail = document.getElementById("user_email").value;
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST","http://localhost:8080/users/save");
+    xmlhttp.open("POST","http://localhost:80/users/save");
     xmlhttp.setRequestHeader("Content-Type","application/json");
     xmlhttp.send(JSON.stringify({
     	name:userName,
@@ -22,7 +22,7 @@ function createUser(){
 
 function deleteUser(userId) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "http://localhost:8080/users/delete/" + userId, true);
+    xhttp.open("DELETE", "http://localhost:80/users/delete/" + userId, true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
     	if (this.readyState == 4 && this.status == 200) {
