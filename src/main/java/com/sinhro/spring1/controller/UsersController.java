@@ -1,5 +1,6 @@
 package com.sinhro.spring1.controller;
 
+import com.sinhro.spring1.Main;
 import com.sinhro.spring1.dto.UsersDto;
 import com.sinhro.spring1.exception.ValidationException;
 import com.sinhro.spring1.service.UsersService;
@@ -26,6 +27,7 @@ public class UsersController {
 
     @GetMapping("/findAll")
     public List<UsersDto> findAllUsers(){
+        Main.test();
         log.info("Handling find all users request");
         return usersService.findAll();
     }
