@@ -10,8 +10,4 @@ public class Main {//Spring1Application
 		SpringApplication.run(Main.class, args);
 	}
 
-	public static void test(){
-		String port = System.getenv("PORT");
-		System.out.println(port);
-	}
 }

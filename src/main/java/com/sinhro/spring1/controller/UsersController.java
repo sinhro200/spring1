@@ -27,7 +27,6 @@ public class UsersController {
 
     @GetMapping("/findAll")
     public List<UsersDto> findAllUsers(){
-        Main.test();
         log.info("Handling find all users request");
         return usersService.findAll();
     }
