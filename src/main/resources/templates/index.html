@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Spring1</title>
 </head>
 <body>
+<script type="text/javascript" th:inline="javascript"> var PORT = [[${PORT}]]</script>
+<div th:utext="${sas}">
+
+</div>
+
 <div id="page-container">
     <div id="content-container">
         <div class="modules-container">
