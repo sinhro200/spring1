@@ -5,7 +5,9 @@ function createUser(){
     var userEmail = document.getElementById("user_email").value;
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST","http://localhost:"+PORT+"/users/save");
+    var url = HOST+":"+PORT+"/users/save";
+    console.log("url :" + url);
+    xmlhttp.open("POST",url);
     xmlhttp.setRequestHeader("Content-Type","application/json");
     xmlhttp.send(JSON.stringify({
     	name:userName,
