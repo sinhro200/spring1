@@ -13,7 +13,9 @@ public class MainController {
     @GetMapping("/")
     public ModelAndView  index() {
         Map<String, Object> params = new HashMap<>();
-        params.put("PORT", System.getenv("PORT"));
+        var port = System.getenv("PORT");
+        params.put("PORT", port);
+        System.out.println(port);
         params.put("sas","zaz");
 
         //return "index.html";
