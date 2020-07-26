@@ -5,7 +5,7 @@ function createUser(){
     var userEmail = document.getElementById("user_email").value;
 
     var xmlhttp = new XMLHttpRequest();
-    var url = HOST+":"+PORT+"/users/save";
+    var url = HOST+"/users/save";
     console.log("url :" + url);
     xmlhttp.open("POST",url);
     xmlhttp.setRequestHeader("Content-Type","application/json");
@@ -24,7 +24,7 @@ function createUser(){
 
 function deleteUser(userId) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "http://localhost:"+PORT+"/users/delete/" + userId, true);
+    xhttp.open("DELETE", HOST+"/users/delete/" + userId, true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
     	if (this.readyState == 4 && this.status == 200) {
@@ -58,7 +58,7 @@ function loadUsers(){
             document.getElementById("users-table").innerHTML = html;
     	}
     };
-    xhttp.open("GET", "http://localhost:"+PORT+"/users/findAll", true);
+    xhttp.open("GET", HOST+"/users/findAll", true);
     xhttp.send();
 }
 console.log(PORT);
