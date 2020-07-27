@@ -4,16 +4,12 @@ import com.sinhro.spring1.dto.UsersDto;
 import com.sinhro.spring1.entity.Users;
 import com.sinhro.spring1.exception.ValidationException;
 import com.sinhro.spring1.repository.UsersRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.Objects.isNull;
 
-//@AllArgsConstructor
 @Service
 public class DefaultUsersService implements UsersService{
 
