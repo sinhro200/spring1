@@ -59,5 +59,4 @@ function loadUsers(){
     xhttp.open("GET", "/users/findAll", true);
     xhttp.send();
 }
-console.log(PORT);
-document.onready = loadUsers();
+document.addEventListener("DOMContentLoaded", loadUsers);
