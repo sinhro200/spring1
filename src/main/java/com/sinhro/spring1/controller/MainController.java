@@ -14,9 +14,9 @@ public class MainController {
     public ModelAndView  index() {
         Map<String, Object> params = new HashMap<>();
         var port = System.getenv("PORT");
-        params.put("PORT", port);
-        System.out.println(port);
-        params.put("sas","zaz");
+        if (port != null) {
+            params.put("PORT", port);
+        }
 
         //return "index.html";
         return new ModelAndView("index", params);
