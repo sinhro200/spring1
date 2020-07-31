@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../resources/css/style.css">
     <title>Spring1</title>
 </head>
 <body>
@@ -29,6 +29,6 @@
         </div>
     </div>
 </div>
-<script src="main.js" type="text/javascript"></script>
+<script src="../../resources/js/main.js" type="text/javascript"></script>
 </body>
 </html>

@@ -20,8 +20,9 @@ public class UsersController {
     private final UsersService usersService;
 
     @PostMapping("/save")
-    public UsersDto saveUsers(@RequestBody UsersDto usersDto) throws ValidationException {
+    public boolean saveUsers(@RequestBody UsersDto usersDto) throws ValidationException {
         log.info("handling save users: " + usersDto);
+
         return usersService.saveUser(usersDto);
     }
 

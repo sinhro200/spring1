@@ -18,7 +18,9 @@ public class MainController {
             params.put("PORT", port);
         }
 
-        //return "index.html";
+        //return "index.jsp";
         return new ModelAndView("index", params);
     }
+
+
 }

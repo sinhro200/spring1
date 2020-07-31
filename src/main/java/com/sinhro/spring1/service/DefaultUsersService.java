@@ -1,32 +1,38 @@
 package com.sinhro.spring1.service;
 
 import com.sinhro.spring1.dto.UsersDto;
+import com.sinhro.spring1.entity.Role;
 import com.sinhro.spring1.entity.Users;
 import com.sinhro.spring1.exception.ValidationException;
 import com.sinhro.spring1.repository.UsersRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @Service
+@RequiredArgsConstructor
 public class DefaultUsersService implements UsersService{
 
     private final UsersRepository usersRepository;
     private final UsersConverter usersConverter;
 
-
-    public DefaultUsersService(UsersRepository usersRepository, UsersConverter usersConverter) {
-        this.usersRepository = usersRepository;
-        this.usersConverter = usersConverter;
-    }
-
     @Override
-    public UsersDto saveUser(UsersDto usersDto) throws ValidationException {
+    public boolean saveUser(UsersDto usersDto) throws ValidationException {
         validateUserDto(usersDto);
-        Users savedUser = usersRepository.save(usersConverter.fromUserDtoToUser(usersDto));
-        return usersConverter.fromUserToUserDTO(savedUser);
+        if (usersRepository.findByLogin(usersDto.getLogin()) != null) {
+            return false;
+        }
+
+        usersDto.setRoles(Collections.singleton(new Role(1L,"ROLE_USER")));
+        usersRepository.save(usersConverter.fromUserDtoToUser(usersDto));
+
+        return true;
     }
 
     @Override
@@ -61,4 +67,14 @@ public class DefaultUsersService implements UsersService{
     }
 
 
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        Users user = usersRepository.findByLogin(s);
+
+        if (user == null){
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        return user;
+    }
 }
